@@ -68,8 +68,17 @@ source venv/bin/activate
 pip install -r requirements.txt
 ```
 
-6. You're all set! Now you can start generating stock reports and analyzing financial data.
+6. Let's prepare the program to run the code!
+```
+Setup config.py with OPENAI api key
+```
+Run 
+```
+python index_news.py
+```
+to fill up vector storage! 
 
+7. You're all set! Now you can start generating stock reports and analyzing financial data.
 
 ## GPT-4 Stock Report Generation
 

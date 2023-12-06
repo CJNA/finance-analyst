@@ -14,6 +14,7 @@ service_context = ServiceContext.from_defaults(llm_predictor=llm_predictor)
 
 # index = GPTVectorStoreIndex.load_from_disk('index_news.json', service_context=service_context)
 storage_context = StorageContext.from_defaults(persist_dir="./storage")
+# index.storage_context.persist(persist_dir="./storage") 
 index = load_index_from_storage(storage_context)
 query_engine = index.as_query_engine()
 
@@ -33,7 +34,7 @@ if report_type == 'Single Stock Outlook':
         with st.spinner(f'Generating report for {symbol}...'):
             response = query_engine.query(f"Write a report on the outlook for {symbol} stock from the years 2023-2027. Be sure to include potential risks and headwinds.")
 
-            st.write(response)
+            st.write(response.response)
 
 if report_type == 'Competitor Analysis':
     symbol1 = st.text_input("Stock Symbol 1")
@@ -43,7 +44,7 @@ if report_type == 'Competitor Analysis':
         with st.spinner(f'Generating report for {symbol1} vs. {symbol2}...'):
             response = query_engine.query(f"Write a report on the competition between {symbol1} stock and {symbol2} stock.")
 
-            st.write(response)
+            st.write(response.response)
 
 
 
